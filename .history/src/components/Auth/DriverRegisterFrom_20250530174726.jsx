@@ -32,6 +32,9 @@ const DriverRegisterForm = () => {
     }
   }, [auth.user]);
 
+  // ...rest of your component (handlers, return, etc.)...
+}
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -94,7 +97,6 @@ const DriverRegisterForm = () => {
       router.push("/driver/dashbord")
     }
   }, [auth.user]);
-  
   return (
     <Container className="h-screen">
       <div className="flex items-center py-5">

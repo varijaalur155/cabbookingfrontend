@@ -10,27 +10,8 @@ import { getDriver, getUser, registerDriver } from "@/Redux/Auth/Action";
 const DriverRegisterForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [jwt, setJwt] = useState(null); 
+  const jwt = localStorage.getItem("jwt");
   const { auth } = useSelector((store) => store);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setJwt(localStorage.getItem("jwt"));
-    }
-  }, []);
-
-  useEffect(() => {
-    console.log("jwt --- ", jwt);
-    if (jwt) {
-      dispatch(getUser(jwt));
-    }
-  }, [jwt]);
-
-  useEffect(() => {
-    if (auth.user) {
-      router.push("/driver/dashbord");
-    }
-  }, [auth.user]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -94,7 +75,6 @@ const DriverRegisterForm = () => {
       router.push("/driver/dashbord")
     }
   }, [auth.user]);
-  
   return (
     <Container className="h-screen">
       <div className="flex items-center py-5">

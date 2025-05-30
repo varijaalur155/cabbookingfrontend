@@ -21,23 +21,15 @@ const Dashbord = () => {
   const [isAllocated, setIsAllocated] = useState(false);
   const { auth, driver, ride } = useSelector((store) => store);
   const dispatch = useDispatch();
-  const [jwt, setJwt] = useState(null);
-
-useEffect(() => {
-  if (typeof window !== "undefined") {
-    setJwt(localStorage.getItem("jwt"));
-  }
-}, []);
+  const jwt = localStorage.getItem("jwt");
   const router=useRouter();
 
 
   console.log("ride",ride)
 
   useEffect(()=>{
-    if (jwt) {
     dispatch(getDriversCompletedRide());
     dispatch(getUser(jwt));
-    }
   },[ride.finisheRide])
 
   useEffect(() => {

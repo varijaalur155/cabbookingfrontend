@@ -19,13 +19,7 @@ const Profile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { auth,user } = useSelector((store) => store);
-  const [jwt, setJwt] = React.useState(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setJwt(localStorage.getItem("jwt"));
-    }
-  }, []);
+  const jwt = localStorage.getItem("jwt");
   const goBack = () => {
     router.back();
   };

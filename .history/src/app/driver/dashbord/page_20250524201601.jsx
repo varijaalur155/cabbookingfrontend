@@ -8,13 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const page = () => {
   const { auth, driver,ride } = useSelector((store) => store);
   const dispatch = useDispatch();
-  const [jwt, setJwt] = React.useState(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setJwt(localStorage.getItem("jwt"));
-    }
-  }, []);
+  const jwt = localStorage.getItem("jwt");
 
   console.log("page auth ", auth);
   
